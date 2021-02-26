@@ -1,10 +1,14 @@
 package entite;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +22,43 @@ public class Marque {
 	
 	@Column(name="marque")
 	private String marque;
+	
+	@OneToMany(mappedBy="id_marque")
+	private List<Produit> produit;
+	
+
+	public Marque() {
+		super();
+	}
+
+	public Marque(String marque) {
+		super();
+		this.marque = marque;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMarque() {
+		return marque;
+	}
+
+	public void setMarque(String marque) {
+		this.marque = marque;
+	}
+
+	public List<Produit> getProduit() {
+		return produit;
+	}
+
+	public void setProduit(List<Produit> produit) {
+		this.produit = produit;
+	}
 	
 	
 
