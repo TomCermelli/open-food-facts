@@ -15,6 +15,8 @@ import javax.persistence.TypedQuery;
 
 import dao.AbstractDao;
 import entite.Categorie;
+import entite.Marque;
+
 
 public class Alimentation extends AbstractDao {
 	
@@ -22,34 +24,23 @@ public class Alimentation extends AbstractDao {
 	
 	private EntityTransaction transaction = em.getTransaction();
 
-	public void insertCategorie() throws IOException {
-		
-		Path pathOrigine = Paths.get("C:/ProjetJava/en.openfoodfacts.org.products.csv");
-		List<String> lines = Files.readAllLines(pathOrigine, StandardCharsets.UTF_8);
-		lines.remove(0);
-		
-		boolean test = false;
+	public void insertCategorie(String categorie) throws IOException {
 		
 		transaction.begin();
 		
-		// Stockage de valeur dans recensement afin d'avoir toute les villes du csv
-		for (int i = 0; i < lines.size(); i++) {
-			String[] infoProduit = lines.get(i).split(";");
-			String categorie = infoProduit[0];
-			
-			for (int i2 = 0; i2 < lines.size(); i2++) {
-				if(lines.get(i).equalsIgnoreCase(categorie)) {
-					test = false;
-				}
-			}
-			
-			if(test) {
-				Categorie categories = new Categorie(categorie);
-				em.persist(categories);
-			}
+		TypedQuery<Categorie> query = em.createQuery("SELECT c FROM Categorie c WHERE c.categorie = ?1", Categorie.class);
+		query.setParameter(1, categorie);
+		List<Categorie> categorieList = query.getResultList();
+		
+		if(categorieList.isEmpty()) {	
+			Categorie categorieInsert = new Categorie(categorie);
+			em.persist(categorieInsert);
+			transaction.commit();
+		}
+		else {
+			System.out.println("Il existe déja");
 		}
 		
-		transaction.commit();
-
+		
 	}
 }
