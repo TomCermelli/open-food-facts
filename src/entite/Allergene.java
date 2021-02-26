@@ -23,7 +23,7 @@ public class Allergene {
 	private int id;
 	
 	@Column(name="allergene")
-	private List<String> allergene;
+	private String allergene;
 	
 	@ManyToMany
 	@JoinTable(name = "produit_allergene",
@@ -39,7 +39,7 @@ public class Allergene {
 		super();
 	}
 
-	public Allergene(List<String> allergene) {
+	public Allergene(String allergene) {
 		super();
 		this.allergene = allergene;
 	}
@@ -52,11 +52,11 @@ public class Allergene {
 		this.id = id;
 	}
 
-	public List<String> getAllergene() {
+	public String getAllergene() {
 		return allergene;
 	}
 
-	public void setAllergene(List<String> allergene) {
+	public void setAllergene(String allergene) {
 		this.allergene = allergene;
 	}
 

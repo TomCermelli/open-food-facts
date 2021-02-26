@@ -23,8 +23,8 @@ public class Marque {
 	@Column(name="marque")
 	private String marque;
 	
-	@OneToMany(mappedBy="id_marque")
-	private List<Produit> produit;
+	@OneToMany(mappedBy="marque")	
+	private List<Produit> produits;
 	
 
 	public Marque() {
@@ -53,11 +53,11 @@ public class Marque {
 	}
 
 	public List<Produit> getProduit() {
-		return produit;
+		return produits;
 	}
 
 	public void setProduit(List<Produit> produit) {
-		this.produit = produit;
+		this.produits = produit;
 	}
 	
 	

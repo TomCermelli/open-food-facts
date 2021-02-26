@@ -22,8 +22,8 @@ public class Categorie {
 	@Column(name="categorie")
 	String categorie;
 	
-	@OneToMany(mappedBy="id_categorie")
-	private List<Produit> produit;
+	@OneToMany(mappedBy="categorie")
+	private List<Produit> produits;
 	
 	
 
@@ -53,11 +53,11 @@ public class Categorie {
 	}
 
 	public List<Produit> getProduit() {
-		return produit;
+		return produits;
 	}
 
 	public void setProduit(List<Produit> produit) {
-		this.produit = produit;
+		this.produits = produit;
 	}
 	
 	

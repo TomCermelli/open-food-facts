@@ -23,7 +23,7 @@ public class Ingredient {
 	private int id;
 	
 	@Column(name="ingredient")
-	private List<String> ingredient;
+	private String ingredient;
 	
 	@ManyToMany
 	@JoinTable(name = "produit_ingredient",
@@ -40,10 +40,6 @@ public class Ingredient {
 	}
 	
 	
-	public Ingredient(List<String> ingredient) {
-		super();
-		this.ingredient = ingredient;
-	}
 
 
 
@@ -55,11 +51,11 @@ public class Ingredient {
 		this.id = id;
 	}
 
-	public List<String> getIngredient() {
+	public String getIngredient() {
 		return ingredient;
 	}
 
-	public void setIngredient(List<String> ingredient) {
+	public void setIngredient(String ingredient) {
 		this.ingredient = ingredient;
 	}
 

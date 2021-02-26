@@ -23,7 +23,7 @@ public class Additif {
 	private int id;
 	
 	@Column(name="additif")
-	private List<String> additif;
+	private String additif;
 	
 	@ManyToMany
 	@JoinTable(name = "produit_additif",
@@ -47,11 +47,11 @@ public class Additif {
 		this.id = id;
 	}
 
-	public List<String> getAdditif() {
+	public String getAdditif() {
 		return additif;
 	}
 
-	public void setAdditif(List<String> additif) {
+	public void setAdditif(String additif) {
 		this.additif = additif;
 	}
 	
