@@ -19,7 +19,7 @@ public class Categorie {
 	@Column(name="id", nullable=false)
 	private int id;
 	
-	@Column(name="categorie", length=255)
+	@Column(name="categorie", length=255, unique=true)
 	String categorie;
 	
 	@OneToMany(mappedBy="categorie")
