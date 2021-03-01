@@ -1,33 +1,41 @@
 package dao;
 
+import java.io.IOException;
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
 import entite.Additif;
+import entite.Produit;
 
 public class AdditifDao extends AbstractDao{
 
-	private EntityManager em;
+	private EntityManager em = emf.createEntityManager();
 
-	public AdditifDao(EntityManager em) {
-		this.em = em;
-	}
+	private EntityTransaction transaction = em.getTransaction();
 
-	public Additif findById(int id) {
-		return em.find(Additif.class, id);
-	}
+	public Additif insertAdditif(String additif, Produit produit) throws IOException {
+		Additif additifInsert = new Additif(null);
 
-	public void insert(Additif additif) {
-		em.persist(additif);
-	}
+		TypedQuery<Additif> query = em.createQuery("SELECT a FROM Additif a WHERE a.additif = ?1", Additif.class);
+		query.setParameter(1, additif);
+		List<Additif> additifList = query.getResultList();
 
-	public void update(Additif additif) {
-		Additif additifDB = findById(additif.getId());
-		additifDB.setAdditif(additif.getAdditif());
-	}
+		if (additifList.isEmpty()) {
+			transaction.begin();
+			additifInsert = new Additif(additif);
+			em.persist(additifInsert);
+			transaction.commit();
+		} else {
+			additifInsert = additifList.get(0);
+			System.err.println("Cette additif existe déja");
+		}
+		
+		produit.getAdditifs().add(additifInsert);
+		return additifInsert;
 
-	public void delete(Additif additif) {
-		Additif additifDB = findById(additif.getId());
-		em.refresh(additifDB);
 	}
 
 }

@@ -38,6 +38,15 @@ public class Additif {
 	public Additif() {
 		super();
 	}
+	
+	
+
+	public Additif(String additif) {
+		super();
+		this.additif = additif;
+	}
+
+
 
 	public int getId() {
 		return id;

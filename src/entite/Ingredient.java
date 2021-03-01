@@ -22,7 +22,7 @@ public class Ingredient {
 	@Column(name="id", nullable=false)
 	private int id;
 	
-	@Column(name="ingredient")
+	@Column(name="ingredient", columnDefinition="TEXT")
 	private String ingredient;
 	
 	@ManyToMany
@@ -39,8 +39,11 @@ public class Ingredient {
 		super();
 	}
 	
-	
 
+	public Ingredient(String ingredient) {
+		super();
+		this.ingredient = ingredient;
+	}
 
 
 	public int getId() {

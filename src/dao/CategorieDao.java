@@ -15,7 +15,8 @@ public class CategorieDao extends AbstractDao {
 
 	private EntityTransaction transaction = em.getTransaction();
 
-	public void insertCategorie(String categorie) throws IOException {
+	public Categorie insertCategorie(String categorie) throws IOException {
+		Categorie categorieInsert = new Categorie(null);
 
 		TypedQuery<Categorie> query = em.createQuery("SELECT c FROM Categorie c WHERE c.categorie = ?1",
 				Categorie.class);
@@ -24,13 +25,16 @@ public class CategorieDao extends AbstractDao {
 
 		if (categorieList.isEmpty()) {
 			transaction.begin();
-			Categorie categorieInsert = new Categorie(categorie);
+			categorieInsert = new Categorie(categorie);
 			em.persist(categorieInsert);
 			transaction.commit();
 		}
 		else {
+			categorieInsert = categorieList.get(0);
 			System.err.println("Cette categorie existe déja");
 		}
+		
+		return categorieInsert;
 	}
 
 }

@@ -35,6 +35,8 @@ public class Categorie {
 		super();
 		this.categorie = categorie;
 	}
+	
+	
 
 	public int getId() {
 		return id;

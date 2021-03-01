@@ -37,22 +37,22 @@ public class Produit {
 	
 	private List<Ingredient> ingredients = new ArrayList<>();
 	
-	@Column(name="energie_100g")
-	private short energie;
+	@Column(name="energie_100g", columnDefinition="float")
+	private float energie;
 	
-	@Column(name="graisse_100g")
+	@Column(name="graisse_100g", columnDefinition="float")
 	private float graisse;
 	
-	@Column(name="sucre_100g")
+	@Column(name="sucre_100g", columnDefinition="float")
 	private float sucre;
 	
-	@Column(name="fibre_100g")
+	@Column(name="fibre_100g", columnDefinition="float")
 	private float fibre;
 	
-	@Column(name="proteines_100g")
+	@Column(name="proteines_100g", columnDefinition="float")
 	private float proteines;
 	
-	@Column(name="sel_100g")
+	@Column(name="sel_100g", columnDefinition="float")
 	private float sel;
 	
 	@ManyToMany
@@ -84,6 +84,26 @@ public class Produit {
 	public Produit() {
 		super();
 	}
+	
+	
+
+	public Produit(String nom, String nutritionGradeFr, float energie, float graisse,
+			float sucre, float fibre, float proteines, float sel, Marque marque, Categorie categorie) {
+		super();
+		this.nom = nom;
+		this.nutritionGradeFr = nutritionGradeFr;
+		this.ingredients = ingredients;
+		this.energie = energie;
+		this.graisse = graisse;
+		this.sucre = sucre;
+		this.fibre = fibre;
+		this.proteines = proteines;
+		this.sel = sel;
+		this.marque = marque;
+		this.categorie = categorie;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -117,7 +137,7 @@ public class Produit {
 		this.ingredients = ingredients;
 	}
 
-	public short getEnergie() {
+	public float getEnergie() {
 		return energie;
 	}
 
