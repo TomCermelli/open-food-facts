@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 import entite.Additif;
 import entite.Produit;
 
-public class AdditifDao extends AbstractDao{
+public class AdditifDao extends AbstractDao {
 
 	private EntityManager em = emf.createEntityManager();
 
@@ -32,7 +32,7 @@ public class AdditifDao extends AbstractDao{
 			additifInsert = additifList.get(0);
 			System.err.println("Cette additif existe déja");
 		}
-		
+
 		produit.getAdditifs().add(additifInsert);
 		return additifInsert;
 

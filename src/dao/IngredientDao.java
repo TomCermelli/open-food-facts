@@ -20,7 +20,8 @@ public class IngredientDao extends AbstractDao {
 	public Ingredient insertIngredient(String ingredient, Produit produit) throws IOException {
 		Ingredient ingredientInsert = new Ingredient(null);
 
-		TypedQuery<Ingredient> query = em.createQuery("SELECT i FROM Ingredient i WHERE i.ingredient = ?1", Ingredient.class);
+		TypedQuery<Ingredient> query = em
+				.createQuery("SELECT i FROM Ingredient i WHERE i.ingredient = ?1", Ingredient.class);
 		query.setParameter(1, ingredient);
 		List<Ingredient> ingredientList = query.getResultList();
 

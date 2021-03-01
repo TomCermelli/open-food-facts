@@ -14,39 +14,31 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="additif")
+@Table(name = "additif")
 public class Additif {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id", nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
 	private int id;
-	
-	@Column(name="additif")
+
+	@Column(name = "additif")
 	private String additif;
-	
-	@ManyToMany
+
+	@ManyToMany 
 	@JoinTable(name = "produit_additif",
 
-			joinColumns = @JoinColumn(name = "id_additif", referencedColumnName = "id"), 
-			inverseJoinColumns = @JoinColumn(name = "id_produit", referencedColumnName = "id"))
+			joinColumns = @JoinColumn(name = "id_additif", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_produit", referencedColumnName = "id"))
 	private List<Produit> produits = new ArrayList<>();
-	
-	
-	
 
 	public Additif() {
 		super();
 	}
-	
-	
 
 	public Additif(String additif) {
 		super();
 		this.additif = additif;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -63,8 +55,5 @@ public class Additif {
 	public void setAdditif(String additif) {
 		this.additif = additif;
 	}
-	
-	
 
-	
 }

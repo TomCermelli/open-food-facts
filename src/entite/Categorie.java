@@ -11,21 +11,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="")
+@Table(name = "")
 public class Categorie {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id", nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
 	private int id;
-	
-	@Column(name="categorie", length=255, unique=true)
+
+	@Column(name = "categorie", length = 255, unique = true)
 	String categorie;
-	
-	@OneToMany(mappedBy="categorie")
+
+	@OneToMany(mappedBy = "categorie")
 	private List<Produit> produits;
-	
-	
 
 	public Categorie() {
 		super();
@@ -35,8 +33,6 @@ public class Categorie {
 		super();
 		this.categorie = categorie;
 	}
-	
-	
 
 	public int getId() {
 		return id;
@@ -61,8 +57,5 @@ public class Categorie {
 	public void setProduit(List<Produit> produit) {
 		this.produits = produit;
 	}
-	
-	
-	
-	
+
 }

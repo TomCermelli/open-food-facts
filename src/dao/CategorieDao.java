@@ -28,12 +28,11 @@ public class CategorieDao extends AbstractDao {
 			categorieInsert = new Categorie(categorie);
 			em.persist(categorieInsert);
 			transaction.commit();
-		}
-		else {
+		} else {
 			categorieInsert = categorieList.get(0);
 			System.err.println("Cette categorie existe déja");
 		}
-		
+
 		return categorieInsert;
 	}
 

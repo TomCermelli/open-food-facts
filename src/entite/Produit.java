@@ -29,7 +29,7 @@ public class Produit {
 	@Column(name="nutrition_grade_fr")
 	private String nutritionGradeFr;
 	
-	@ManyToMany
+	@ManyToMany 
 	@JoinTable(name = "produit_ingredient",
 
 			joinColumns = @JoinColumn(name = "id_produit", referencedColumnName = "id"), 

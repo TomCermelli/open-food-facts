@@ -12,20 +12,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="marque")
+@Table(name = "marque")
 public class Marque {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id", nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
 	private int id;
-	
-	@Column(name="marque")
+
+	@Column(name = "marque")
 	private String marque;
-	
-	@OneToMany(mappedBy="marque")	
+
+	@OneToMany(mappedBy = "marque")
 	private List<Produit> produits;
-	
 
 	public Marque() {
 		super();
@@ -59,7 +58,5 @@ public class Marque {
 	public void setProduit(List<Produit> produit) {
 		this.produits = produit;
 	}
-	
-	
 
 }

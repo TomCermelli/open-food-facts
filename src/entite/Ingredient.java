@@ -14,37 +14,32 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ingredient")
+@Table(name = "ingredient")
 public class Ingredient {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id", nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
 	private int id;
-	
-	@Column(name="ingredient", columnDefinition="TEXT")
+
+	@Column(name = "ingredient", columnDefinition = "TEXT")
 	private String ingredient;
-	
+
 	@ManyToMany
 	@JoinTable(name = "produit_ingredient",
 
-			joinColumns = @JoinColumn(name = "id_ingredient", referencedColumnName = "id"), 
-			inverseJoinColumns = @JoinColumn(name = "id_produit", referencedColumnName = "id"))
-	
+			joinColumns = @JoinColumn(name = "id_ingredient", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_produit", referencedColumnName = "id"))
+
 	private List<Produit> produits = new ArrayList<>();
-	
-	
 
 	public Ingredient() {
 		super();
 	}
-	
 
 	public Ingredient(String ingredient) {
 		super();
 		this.ingredient = ingredient;
 	}
-
 
 	public int getId() {
 		return id;
@@ -69,7 +64,5 @@ public class Ingredient {
 	public void setProduits(List<Produit> produits) {
 		this.produits = produits;
 	}
-	
-	
 
 }

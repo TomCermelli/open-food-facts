@@ -6,7 +6,6 @@ public class FloatUtils {
 		if (value.isEmpty()) {
 			return 0f;
 		}
-
 		return Float.parseFloat(value);
 	}
 }
